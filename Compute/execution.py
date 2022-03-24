@@ -64,13 +64,13 @@ if __name__ == "__main__":
     sequence_length = np.arange(
         1, len(agent.correlation.correlation_complexity_list) + 1
     )
-    fig, ax = plt.subplots(2, 1)
-    ax[0].plot(sequence_length, agent.correlation.block_entropy)
-    ax[0].tick_params("x", labelbottom=False)
-    ax[0].set_ylabel("Block Entropy $S$")
-    ax[1].set_ylabel("Correlation Complexity $\eta$")
-    ax[1].set_xlabel("Sequence length n")
-    ax[1].plot(sequence_length, agent.correlation.correlation_complexity_list)
+    # fig, axs = plt.subplots(2, 1)
+    fig, axs = plt.subplots(2, gridspec_kw={'hspace': 0})
+    axs[0].plot(sequence_length, agent.correlation.block_entropy, 'o-')
+    axs[0].tick_params("x", labelbottom=False)
+    axs[0].set_ylabel("Block Entropy $S$")
+    axs[1].set_ylabel("Correlation Complexity $\eta$")
+    axs[1].set_xlabel("Sequence length n")
+    axs[1].plot(sequence_length, agent.correlation.correlation_complexity_list, 'o-')
 
-    # plt.legend()
     plt.show()
