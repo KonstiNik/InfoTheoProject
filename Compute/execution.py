@@ -3,11 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
-    # list_1 = [1,2,3,4]
-    #
-    # arr = np.array([1, 2, 3, 4])
-    # print(np.tensordot(arr, arr, axes=0))
-    # print(np.empty_like(np.tensordot(arr, arr, axes=0)))
 
     x = [[1], [0], [0], [1]]
     edge_index = [[0, 1, 1, 2, 3],
