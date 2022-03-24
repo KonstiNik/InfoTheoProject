@@ -1,5 +1,5 @@
 import numpy as np
-from preprocess import PreProcess
+from Compute.preprocess import PreProcess
 
 
 class Correlation:

@@ -1,4 +1,4 @@
-from evaluator import Evaluator
+from Compute.evaluator import Evaluator
 import numpy as np
 import matplotlib.pyplot as plt
 

@@ -1,6 +1,6 @@
-from preprocess import PreProcess
-from entropy import Entropy
-from correlation import Correlation
+from Compute.preprocess import PreProcess
+from Compute.entropy import Entropy
+from Compute.correlation import Correlation
 
 
 class Evaluator:
