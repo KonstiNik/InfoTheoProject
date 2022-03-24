@@ -1,0 +1,111 @@
+{% load static %}
+<html>
+    <head>
+         <title>EntropyCalculator</title>
+    </head>
+    <style>
+body {
+  background-color: white;
+  color: black;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+</style>
+    <h1>
+        Entropy Calculator
+    </h1>
+    <body>
+<div>
+         Hello, {{ name }}.
+         This is a simple version that computes the entropy and the correlation complexity.
+<br><br><br><br>
+
+   </div>
+
+<div style="width: 70%; float:right" align="justify">
+<img src="{% static 'funny.png' %}" alt="My image" width="800" align="left">
+</div>
+<div style="width: 30%; float:left">
+    <form action="addVertex" method="post" float="left">  {% csrf_token %}
+        <label for="Add vertex">Add vertex: </label>
+        <input style="width: 100px;" id="name" type="text" name="name" value="name of vertex">
+        <input style="width: 60px;" id="output" type="text" name="output" value="output">
+        <input type="submit" value="OK">
+    </form>
+
+     <form action="removeVertex" method="post" float = "right">  {% csrf_token %}
+        <label for="removeVertex">Remove vertex: </label>
+        <input style="width: 100px;" id="name" type="text" name="name" value="name of vertex">
+        <input type="submit" value="OK">
+    </form>
+
+
+
+    <form action="addEdge" method="post">  {% csrf_token %}
+        <label for="Add edge">Add edge: </label>
+        <input style="width: 60px;" id="from" type="from" name="from" value="from">
+        <input style="width: 60px;" id="to" type="to" name="to" value="to">
+        <input style="width: 30px;" id="prob" type="from" name="prob" value="to">
+        <input type="submit" value="OK">
+    </form>
+
+
+
+    <form action="removeEdge" method="post">  {% csrf_token %}
+        <label for="removeEdge">Remove edge: </label>
+        <input style="width: 60px;" id="from" type="from" name="from" value="from">
+        <input style="width: 60px;" id="to" type="to" name="to" value="to">
+        <input type="submit" value="OK">
+    </form>
+
+        <form action="drawMethod" method="post">  {% csrf_token %}
+            <label for="layout">Choose a layout:</label>
+            <select id="layout" name="layout">
+                <option value="kamada">Kamada</option>
+                <option value="spring">Spring</option>
+                <option value="planar">Planar</option>
+                <option value="circular">Circular</option>
+
+            </select>
+        <input type="submit" value="OK">
+    </form>
+</div>
+
+<button onclick="myFunction()">Toggle dark mode</button>
+
+<script>
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+
+<div>
+
+
+</div>
+
+<form action="compute" method="post">  {% csrf_token %}
+            <label for="compute">Compute Entropy,...</label>
+        <input type="submit" value="Compute">
+    </form>
+<div>
+
+Entropy: {{entropy}}
+</div>
+<div>
+Stationary Distribution: {{distribution}}
+
+</div>
+<div>
+Correlation Length: {{length}}</div>
+<div>
+        Correlation Complexity: {{complexity}}
+</div>
+
+
+    </body>
+</html>

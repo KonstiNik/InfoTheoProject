@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h1 style="color:red">ERROR</h1>
+Ooops. The following error occured: {{ error }}.
+
+
+<form action="loadSide" method="post" float = "right">  {% csrf_token %}
+        <input type="submit" value="Go back?">
+    </form>
+</body>
+</html>
