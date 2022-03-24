@@ -1,19 +1,25 @@
 {% load static %}
 <html>
-    <head>
-         <title>Cool Correlation Calculator</title>
-    </head>
-    <style>
-body {
-  background-color: white;
-  color: black;
-}
+<head>
+    <title>Cool Correlation Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-.dark-mode {
-  background-color: black;
-  color: white;
-}
-</style>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-family: 'Open Sans';
+        }
+
+        .dark-mode {
+          background-color: black;
+          color: white;
+        }
+    </style>
+</head>
+
     <h1>
         Correlation Calculator
     </h1>
@@ -35,14 +41,14 @@ body {
 <div style="width: 30%; float:left">
     <form action="addVertex" method="post" float="left">  {% csrf_token %}
         <label for="Add vertex">Add vertex: </label>
-        <input style="width: 100px;" id="name" type="text" name="name" value="name of vertex">
-        <input style="width: 60px;" id="output" type="text" name="output" value="output">
+        <input style="width: 100px;" id="name" type="text" name="name" placeholder="name">
+        <input style="width: 60px;" id="output" type="text" name="output" placeholder="output">
         <input type="submit" value="OK">
     </form>
 
      <form action="removeVertex" method="post" float = "right">  {% csrf_token %}
         <label for="removeVertex">Remove vertex: </label>
-        <input style="width: 100px;" id="name" type="text" name="name" value="name of vertex">
+        <input style="width: 100px;" id="name" type="text" name="name" placeholder="name">
         <input type="submit" value="OK">
     </form>
 
@@ -50,8 +56,8 @@ body {
 
     <form action="addEdge" method="post">  {% csrf_token %}
         <label for="Add edge">Add edge: </label>
-        <input style="width: 60px;" id="from" type="from" name="from" value="from">
-        <input style="width: 60px;" id="to" type="to" name="to" value="to">
+        <input style="width: 60px;" id="from" type="from" name="from" placeholder="from">
+        <input style="width: 60px;" id="to" type="to" name="to" placeholder="to">
         <input type="submit" value="OK">
     </form>
 
@@ -59,8 +65,8 @@ body {
 
     <form action="removeEdge" method="post">  {% csrf_token %}
         <label for="removeEdge">Remove edge: </label>
-        <input style="width: 60px;" id="from" type="from" name="from" value="from">
-        <input style="width: 60px;" id="to" type="to" name="to" value="to">
+        <input style="width: 60px;" id="from" type="from" name="from" placeholder="from">
+        <input style="width: 60px;" id="to" type="to" name="to" placeholder="to">
         <input type="submit" value="OK">
     </form>
 
