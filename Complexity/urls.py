@@ -18,7 +18,5 @@ from django.urls import path
 from django.urls import include, path
 
 urlpatterns = [
-    path('GraphVis/', include('GraphVis.urls')),
-    path('admin/', admin.site.urls),
-
+    path('GraphVis/', include('GraphVis.urls'))
 ]

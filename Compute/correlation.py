@@ -314,7 +314,7 @@ class Correlation:
         Check if break conditions are fulfilled.
         Todo: Implement the second condition defined by correlation length
         """
-        if self.sequence_length > 2 + len(self.nodes):
+        if self.sequence_length > 2 * len(self.nodes):
             self.break_condition = True
 
     def iterate_over_sequences(self):

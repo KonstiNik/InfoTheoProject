@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-         <title>EntropyCalculator</title>
+         <title>Cool Correlation Calculator</title>
     </head>
     <style>
 body {
@@ -15,18 +15,22 @@ body {
 }
 </style>
     <h1>
-        Entropy Calculator
+        Correlation Calculator
     </h1>
     <body>
 <div>
-         Hello, {{ name }}.
-         This is a simple version that computes the entropy and the correlation complexity.
+         This is a simple Web application that computes the entropy and the correlation complexity of a hidden markov model.
+    <br>
+    It has the following structure: On the left-hand side you find different tools to modify your graph. On the right-hand side the graph
+    is plotted. <br> By pressing the Compute button you can compute the entropy, the stationary distribution, the correlation length and the correlation
+    complexity of the system.
+
 <br><br><br><br>
 
    </div>
 
 <div style="width: 70%; float:right" align="justify">
-<img src="{% static 'funny.png' %}" alt="My image" width="800" align="left">
+<img src="{% static 'Graph.png' %}" alt="My image" width="800" align="left">
 </div>
 <div style="width: 30%; float:left">
     <form action="addVertex" method="post" float="left">  {% csrf_token %}
@@ -48,7 +52,6 @@ body {
         <label for="Add edge">Add edge: </label>
         <input style="width: 60px;" id="from" type="from" name="from" value="from">
         <input style="width: 60px;" id="to" type="to" name="to" value="to">
-        <input style="width: 30px;" id="prob" type="from" name="prob" value="to">
         <input type="submit" value="OK">
     </form>
 
@@ -68,20 +71,15 @@ body {
                 <option value="spring">Spring</option>
                 <option value="planar">Planar</option>
                 <option value="circular">Circular</option>
+                <option value="random">Random</option>
+
 
             </select>
         <input type="submit" value="OK">
     </form>
 </div>
 
-<button onclick="myFunction()">Toggle dark mode</button>
 
-<script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
-</script>
 
 <div>
 
@@ -89,7 +87,7 @@ function myFunction() {
 </div>
 
 <form action="compute" method="post">  {% csrf_token %}
-            <label for="compute">Compute Entropy,...</label>
+            <label for="compute">Compute Entropy,...:</label>
         <input type="submit" value="Compute">
     </form>
 <div>
@@ -103,9 +101,24 @@ Stationary Distribution: {{distribution}}
 <div>
 Correlation Length: {{length}}</div>
 <div>
-        Correlation Complexity: {{complexity}}
+        Correlation Complexity {{complexity}}
 </div>
 
+
+<div>
+<img src="{% static 'Complexity.png' %}" alt="My image" width="400" align="left">
+</div>
+    <div>
+
+        <button onclick="myFunction()">Change to dark mode</button>
+
+<script>
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+    </div>
 
     </body>
 </html>
