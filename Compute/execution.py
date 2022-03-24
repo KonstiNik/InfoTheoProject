@@ -3,13 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-### Example script of how to execute the algorithm in python ###
+### This is an example script of how to execute the algorithm in python ###
+### withou using the GUI ###
 
 if __name__ == "__main__":
 
-    # x = [[1], [0], [0], [1]]
-    # edge_index = [[0, 1, 1, 2, 3],
-    #               [1, 2, 3, 0, 0]]
+    x = [[1], [0], [0], [1]]
+    edge_index = [[0, 1, 1, 2, 3],
+                  [1, 2, 3, 0, 0]]
     # edge_features = [1, 0.5, 0.5, 1, 1]
 
     # x = [[0], [0], [1]]
@@ -24,9 +25,9 @@ if __name__ == "__main__":
     # edge_index = [[0, 1],
     #               [1, 0]]
 
-    x = [[0]]
-    edge_index = [[0],
-                  [0]]
+    # x = [[0]]
+    # edge_index = [[0],
+    #               [0]]
 
     # x = [[1], [0], [0]]
     # edge_index = [[0, 1, 1, 2, 0],
