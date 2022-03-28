@@ -1,130 +1,122 @@
 {% load static %}
 <html>
-<head>
-    <title>Cool Correlation Calculator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <head>
+        <title>Cool Correlation Calculator</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
 
-    <style>
-        body {
-            background-color: white;
-            color: black;
-            font-family: 'Open Sans';
-        }
+        <style>
+            body {
+                background-color: white;
+                color: black;
+                font-family: "Open Sans";
+            }
 
-        .dark-mode {
-          background-color: black;
-          color: white;
-        }
-    </style>
-</head>
+            .dark-mode {
+                background-color: black;
+                color: white;
+            }
+        </style>
+    </head>
 
     <h1>
         Correlation Calculator
     </h1>
     <body>
-<div>
-         This is a simple Web application that computes the entropy and the correlation complexity of a hidden markov model.
-    <br>
-    It has the following structure: On the left-hand side you find different tools to modify your graph. On the right-hand side the graph
-    is plotted. <br> By pressing the Compute button you can compute the entropy, the stationary distribution, the correlation length and the correlation
-    complexity of the system.
+        <div>
+            This is a simple Web application that computes the entropy and the correlation complexity of a hidden markov model.
+            <br />
+            It has the following structure: On the left-hand side you find different tools to modify your graph. On the right-hand side the graph is plotted. <br />
+            By pressing the Compute button you can compute the entropy, the stationary distribution, the correlation length and the correlation complexity of the system.
 
-<br><br><br><br>
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
 
-   </div>
+        <div style="width: 70%; float: right;" align="justify">
+            <img src="{% static 'Graph.png' %}" alt="My image" width="800" align="left" />
+        </div>
+        <div style="width: 30%; float: left;">
+            <form action="addVertex" method="post" float="left">
+                {% csrf_token %}
+                <label for="Add vertex">Add vertex: </label>
+                <input style="width: 100px;" id="name" type="text" name="name" placeholder="name" />
+                <input style="width: 60px;" id="output" type="text" name="output" placeholder="output" />
+                <input type="submit" value="OK" />
+            </form>
 
-<div style="width: 70%; float:right" align="justify">
-<img src="{% static 'Graph.png' %}" alt="My image" width="800" align="left">
-</div>
-<div style="width: 30%; float:left">
-    <form action="addVertex" method="post" float="left">  {% csrf_token %}
-        <label for="Add vertex">Add vertex: </label>
-        <input style="width: 100px;" id="name" type="text" name="name" placeholder="name">
-        <input style="width: 60px;" id="output" type="text" name="output" placeholder="output">
-        <input type="submit" value="OK">
-    </form>
+            <form action="removeVertex" method="post" float="right">
+                {% csrf_token %}
+                <label for="removeVertex">Remove vertex: </label>
+                <input style="width: 100px;" id="name" type="text" name="name" placeholder="name" />
+                <input type="submit" value="OK" />
+            </form>
 
-     <form action="removeVertex" method="post" float = "right">  {% csrf_token %}
-        <label for="removeVertex">Remove vertex: </label>
-        <input style="width: 100px;" id="name" type="text" name="name" placeholder="name">
-        <input type="submit" value="OK">
-    </form>
+            <form action="addEdge" method="post">
+                {% csrf_token %}
+                <label for="Add edge">Add edge: </label>
+                <input style="width: 60px;" id="from" type="from" name="from" placeholder="from" />
+                <input style="width: 60px;" id="to" type="to" name="to" placeholder="to" />
+                <input type="submit" value="OK" />
+            </form>
 
+            <form action="removeEdge" method="post">
+                {% csrf_token %}
+                <label for="removeEdge">Remove edge: </label>
+                <input style="width: 60px;" id="from" type="from" name="from" placeholder="from" />
+                <input style="width: 60px;" id="to" type="to" name="to" placeholder="to" />
+                <input type="submit" value="OK" />
+            </form>
 
+            <form action="drawMethod" method="post">
+                {% csrf_token %}
+                <label for="layout">Choose a layout:</label>
+                <select id="layout" name="layout">
+                    <option value="kamada">Kamada</option>
+                    <option value="spring">Spring</option>
+                    <option value="planar">Planar</option>
+                    <option value="circular">Circular</option>
+                    <option value="random">Random</option>
+                </select>
+                <input type="submit" value="OK" />
+            </form>
+        </div>
 
-    <form action="addEdge" method="post">  {% csrf_token %}
-        <label for="Add edge">Add edge: </label>
-        <input style="width: 60px;" id="from" type="from" name="from" placeholder="from">
-        <input style="width: 60px;" id="to" type="to" name="to" placeholder="to">
-        <input type="submit" value="OK">
-    </form>
+        <div></div>
 
-
-
-    <form action="removeEdge" method="post">  {% csrf_token %}
-        <label for="removeEdge">Remove edge: </label>
-        <input style="width: 60px;" id="from" type="from" name="from" placeholder="from">
-        <input style="width: 60px;" id="to" type="to" name="to" placeholder="to">
-        <input type="submit" value="OK">
-    </form>
-
-        <form action="drawMethod" method="post">  {% csrf_token %}
-            <label for="layout">Choose a layout:</label>
-            <select id="layout" name="layout">
-                <option value="kamada">Kamada</option>
-                <option value="spring">Spring</option>
-                <option value="planar">Planar</option>
-                <option value="circular">Circular</option>
-                <option value="random">Random</option>
-
-
-            </select>
-        <input type="submit" value="OK">
-    </form>
-</div>
-
-
-
-<div>
-
-
-</div>
-
-<form action="compute" method="post">  {% csrf_token %}
+        <form action="compute" method="post">
+            {% csrf_token %}
             <label for="compute">Compute Entropy,...:</label>
-        <input type="submit" value="Compute">
-    </form>
-<div>
+            <input type="submit" value="Compute" />
+        </form>
+        <div>
+            Entropy: {{entropy}}
+        </div>
+        <div>
+            Stationary Distribution: {{distribution}}
+        </div>
+        <div>
+            Correlation Length: {{length}}
+        </div>
+        <div>
+            Correlation Complexity {{complexity}}
+        </div>
 
-Entropy: {{entropy}}
-</div>
-<div>
-Stationary Distribution: {{distribution}}
+        <div>
+            <img src="{% static 'Complexity.png' %}" alt="My image" width="400" align="left" />
+        </div>
+        <div>
+            <button onclick="myFunction()">Change to dark mode</button>
 
-</div>
-<div>
-Correlation Length: {{length}}</div>
-<div>
-        Correlation Complexity {{complexity}}
-</div>
-
-
-<div>
-<img src="{% static 'Complexity.png' %}" alt="My image" width="400" align="left">
-</div>
-    <div>
-
-        <button onclick="myFunction()">Change to dark mode</button>
-
-<script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
-</script>
-    </div>
-
+            <script>
+                function myFunction() {
+                    var element = document.body;
+                    element.classList.toggle("dark-mode");
+                }
+            </script>
+        </div>
     </body>
 </html>
