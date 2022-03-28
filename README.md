@@ -1,4 +1,4 @@
-# Project of Information Theory of Complex Systems
+# Project in Information Theory of Complex Systems
 
 In order to start the application the following steps
 have to be executed in the correct order.
