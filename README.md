@@ -1,5 +1,8 @@
 # Project in Information Theory of Complex Systems
 
+This project enables the user to create a binary finite state automaton and evaluates the corresponding information theoretic properties. 
+
+
 In order to start the application the following steps
 have to be executed in the correct order.
 
